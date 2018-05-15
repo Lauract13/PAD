@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <stroke android:width="2dp"
         android:color="#EAF8EA"/>
-    <solid android:color="@color/cast_expanded_controller_seek_bar_progress_background_tint_color"/>
+    <solid android:color="#EAF8EA"></solid>
 
 </shape>
