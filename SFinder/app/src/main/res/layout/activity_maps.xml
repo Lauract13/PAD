@@ -4,12 +4,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MapsActivity" >
 
     <!--linear layaut del mapa -->
+
     <LinearLayout
         android:layout_weight="1"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -18,6 +19,7 @@
         android:orientation="vertical">
 
         <!--fragmentno del mapa -->
+
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:map="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
@@ -26,12 +28,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".MapsActivity"
-            tools:layout="@android:layout/activity_list_item">
-        </fragment>
+            tools:layout="@android:layout/activity_list_item"></fragment>
+
+
 
     </LinearLayout>
 
-    <!--linear botones-->
     <LinearLayout
         xmlns:tools="http://schemas.android.com/tools"
         tools:context="gps.ucm.seekers.MainActivity"
@@ -41,42 +43,49 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Button
-            xmlns:tools="http://schemas.android.com/tools"
+        <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="Menu"
             android:text="Menu"
-            tools:text="Menu"
+            android:textColor="@android:color/holo_blue_light"
+            android:textColorLink="@android:color/holo_blue_light"
             android:textSize="20sp"
-            android:textStyle="italic"/>
+            android:textStyle="bold"
+            tools:text="Menu" />
 
-        <Button
-            xmlns:tools="http://schemas.android.com/tools"
+        <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bMapa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="Mapa"
             android:text="Mapa"
-            tools:text="Mapa"
+            android:textColor="@android:color/holo_blue_light"
+            android:textColorLink="@android:color/holo_blue_light"
             android:textSize="20sp"
-            android:textStyle="italic"/>
+            android:textStyle="bold"
+            tools:text="Mapa" />
 
-        <Button
-            xmlns:tools="http://schemas.android.com/tools"
+        <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="Perfil"
             android:text="Perfil"
-            tools:text="Perfil"
+            android:textColor="@android:color/holo_blue_light"
+            android:textColorLink="@android:color/holo_blue_light"
             android:textSize="20sp"
-            android:textStyle="italic"/>
+            android:textStyle="bold"
+            tools:text="Perfil" />
 
     </LinearLayout>
+
+
+
+
 
 </LinearLayout>
