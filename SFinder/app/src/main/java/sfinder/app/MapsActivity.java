@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location)
     {
-        
+
         mLastLocation = location;
 
         if (mCurrLocationMarker != null) {
