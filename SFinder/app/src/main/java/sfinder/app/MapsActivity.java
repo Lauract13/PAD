@@ -71,29 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location)
     {
-      /** mLastLocation = location;
-        if (mCurrLocationMarker != null) {
-            mCurrLocationMarker.remove();
-        }
-
-        //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        /*
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Current Position");
-        markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        mCurrLocationMarker = mGoogleMap.addMarker(markerOptions);
-        */
-
-        //move map camera
-        /**mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
-
-        //optionally, stop location updates if only current location is needed
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
-*/
+        
         mLastLocation = location;
 
         if (mCurrLocationMarker != null) {
@@ -108,8 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
         mCurrLocationMarker = mMap.addMarker(markerOptions);
 
-       // CircleOptions addCircle = new CircleOptions().center(latLng).radius(radiusInMeters).fillColor(shadeColor).strokeColor(strokeColor).strokeWidth(8);
-       // mCircle = mMap.addCircle(addCircle);
+
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -142,7 +119,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void onConnected(Bundle connectionHint) {
 
-       /* mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+       mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1000);
@@ -154,8 +131,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mFusedLocationClient.getLastLocation();
 
 
-        }*/
-        getCurrentLocation();
+        }
+
 
     }
     /**
@@ -185,10 +162,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
         }
         // Add a marker in Sydney and move the camera
-       /* LatLng sydney = new LatLng(-34, 151);
+        LatLng sydney = new LatLng(-34, 151);
 
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
 
 
     }
