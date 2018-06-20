@@ -9,6 +9,23 @@
     tools:context="sfinder.app.MainActivity">
 
 
+
+
+    <EditText
+        android:id="@+id/etemail"
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="186dp"
+        android:background="@drawable/container"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="8dp"
+        android:textColor="@android:color/holo_blue_light"
+        android:textColorHint="@android:color/holo_blue_light"
+        android:textColorLink="#FFFFFF" />
+
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="306dp"
@@ -26,23 +43,8 @@
         android:textColorHint="@android:color/holo_blue_light"
         android:textColorLink="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/etemail"
-        android:layout_width="306dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="186dp"
-        android:background="@drawable/container"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="8dp"
-        android:textColor="@android:color/holo_blue_light"
-        android:textColorHint="@android:color/holo_blue_light"
-        android:textColorLink="#FFFFFF" />
-
     <Button
-        android:id="@+id/bInicio"
+        android:id="@+id/bInicioSesion"
         android:layout_width="350dp"
 
         android:layout_height="35dp"

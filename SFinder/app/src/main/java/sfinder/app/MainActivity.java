@@ -108,8 +108,7 @@ public class MainActivity extends AppCompatActivity {
         return valid;
     }
     public void iniciarSesion(String email,String password){
-        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-        MainActivity.this.startActivity(intent);
+
 
         if(!validateForm()){
             return;
@@ -121,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                            MainActivity.this.startActivity(intent);
 
                         }else{
                             Toast.makeText(MainActivity.this,"Error de auntentificación",Toast.LENGTH_SHORT).show();
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v){
         int i = v.getId();
 
-        if(i == R.id.bInicio){
+        if(i == R.id.bInicioSesion){
             iniciarSesion(mEmailField.getText().toString(), mPasswordField.getText().toString());
 
         }else if(i == R.id.bRegistro){
