@@ -43,6 +43,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 
 
+
+
 import com.google.android.gms.common.api.GoogleApiClient;
 
 
@@ -153,6 +155,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.

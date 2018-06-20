@@ -15,6 +15,18 @@
       },
       "oauth_client": [
         {
+          "client_id": "902085622523-ji1ohrdmu8c1g4n0sesjouu174q5s717.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sfinder.app",
+            "certificate_hash": "40914a25f6b11d29710ad761ce1c491b4f049f4a"
+          }
+        },
+        {
+          "client_id": "902085622523-r8r2ao0cf1jhu4c3thm3grh5rttdijib.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "902085622523-r8r2ao0cf1jhu4c3thm3grh5rttdijib.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +41,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902085622523-r8r2ao0cf1jhu4c3thm3grh5rttdijib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
