@@ -38,6 +38,8 @@ import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 
 
 
@@ -66,7 +68,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         //Place current location marker
 
+
+
     }
+
+
+
 
     @Override
     public void onLocationChanged(Location location)
@@ -92,13 +99,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
-        //stop location updates
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-        }
+
 }
     @Override
     public void onConnectionSuspended(int i) {}
+
+
+    public void onSuccess(int result){}
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {}
@@ -128,7 +135,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            mFusedLocationClient.getLastLocation();
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                // Logic to handle location object
+                                LatLng myLocation = new LatLng(location.getLatitude(),location.getLongitude());
+                                mMap.addMarker(new MarkerOptions().position(myLocation).title("Estas aquí"));
+                            }
+                        }
+                    });
 
 
         }
@@ -161,11 +179,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
 
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        mFusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                            LatLng myLocation = new LatLng(location.getLatitude(),location.getLongitude());
+                            mMap.addMarker(new MarkerOptions().position(myLocation).title("Estas aquí"));
+                        }
+                    }
+                });
 
 
 
