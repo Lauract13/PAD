@@ -11,11 +11,12 @@
 
     <EditText
         android:id="@+id/etPassword"
-        android:layout_width="match_parent"
+        android:layout_width="306dp"
         android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
 
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="204dp"
         android:background="@drawable/container"
         android:ems="10"
         android:hint="Contraseña"
@@ -27,11 +28,11 @@
 
     <EditText
         android:id="@+id/etemail"
-        android:layout_width="match_parent"
+        android:layout_width="306dp"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="161dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="186dp"
         android:background="@drawable/container"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -47,9 +48,9 @@
         android:layout_height="35dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="86dp"
         android:background="@android:color/holo_blue_light"
-        android:onClick="iniciarSesion"
+        android:onClick="onClick"
         android:text="Inicio de Sesión"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
         android:textColor="@android:color/white"
@@ -64,9 +65,9 @@
 
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="63dp"
+        android:layout_marginBottom="36dp"
         android:background="@android:color/holo_blue_light"
-        android:onClick="registrarUsuario"
+        android:onClick="onClick"
         android:text="Registrar"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
         android:textColor="@android:color/white" />

@@ -59,29 +59,9 @@ public class MainActivity extends AppCompatActivity {
     public void onStart(){
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
+
     }
-    private void updateUI(FirebaseUser user) {
-        /*hideProgressDialog();
-        if (user != null) {
-            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
-                    user.getEmail(), user.isEmailVerified()));
-            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
-            findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
-            findViewById(R.id.email_password_fields).setVisibility(View.GONE);
-            findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
-
-            findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
-        } else {
-            mStatusTextView.setText(R.string.signed_out);
-            mDetailTextView.setText(null);
-
-            findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
-            findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
-            findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
-        }*/
-    }
 
     public void registro(String email, String password){
 
@@ -94,10 +74,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            enviaEmailVerificacion();
+
                         }else{
-                            Toast.makeText(MainActivity.this,"Autehnticationfailesd.",Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+                            Toast.makeText(MainActivity.this,"Se produjo un error en el registro.",Toast.LENGTH_SHORT).show();
+
                         }
 
 
@@ -140,10 +121,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+
                         }else{
-                            Toast.makeText(MainActivity.this,"Authentication failed",Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+                            Toast.makeText(MainActivity.this,"Error de auntentificación",Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
@@ -165,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void cerrarSesion(){
         mAuth.signOut();
-        //updateUI(null);
+
     }
 
     private void enviaEmailVerificacion(){
@@ -180,11 +161,11 @@ public class MainActivity extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(MainActivity.this,
-                                    "Verification email sent to " + user.getEmail(),
+                                    "Email de verificación enviado a " + user.getEmail(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(MainActivity.this,
-                                    "Failed to send verification email.",
+                                    "Se produjo un error al mandar el email de verificación",
                                     Toast.LENGTH_SHORT).show();
                         }
                         // [END_EXCLUDE]
