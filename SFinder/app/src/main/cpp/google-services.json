@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "902085622523",
+    "firebase_url": "https://sfinder-2c8c0.firebaseio.com",
+    "project_id": "sfinder-2c8c0",
+    "storage_bucket": "sfinder-2c8c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902085622523:android:7b4d2ab8dd69d728",
+        "android_client_info": {
+          "package_name": "sfinder.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902085622523-ji1ohrdmu8c1g4n0sesjouu174q5s717.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sfinder.app",
+            "certificate_hash": "40914a25f6b11d29710ad761ce1c491b4f049f4a"
+          }
+        },
+        {
+          "client_id": "902085622523-r8r2ao0cf1jhu4c3thm3grh5rttdijib.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "902085622523-r8r2ao0cf1jhu4c3thm3grh5rttdijib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjVRAA45R0Ii9x6QiPlLWQGw5WMhN9HBI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902085622523-r8r2ao0cf1jhu4c3thm3grh5rttdijib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
