@@ -166,18 +166,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
 
-        DatabaseReference dbSFinder =
+       /* DatabaseReference dbSFinder =
                 FirebaseDatabase.getInstance().getReference()
-                        .child("Farmacia");
+                        .child("Farmacia");*/
+       DatabaseReference dbSFinder = FirebaseDatabase.getInstance().getReference();
 
+     /*  dbSFinder.child("Farmacias").addChildEventListener(new ValueEventListener(){
+
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot){
+              for(DataSnapshot farmacias : dataSnapshot.getChildren()){
+
+                  for(DataSnapshot datosFar : farmacias.getChildren()){
+                      Double lat = (double) datosFar.child("Latitud").getValue();
+                      Double lon = (double) datosFar.child("Longitud").getValue();
+                  }
+              }
+          }
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });*/
         dbSFinder.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Double lat = (double) dataSnapshot.child("Latitud").getValue();
-                    Double lon = (double) dataSnapshot.child("Longitud").getValue();
-                    String tit = dataSnapshot.child("Descripcion").getValue().toString();
+                DataSnapshot dbSnapshot = dataSnapshot.child("Farmacias");
+
+                Iterable<DataSnapshot> children = dbSnapshot.getChildren();
+
+                for (DataSnapshot c : children) {
+                    Double lat = (double) c.child("Latitud").getValue();
+                    Double lon = (double) c.child("Longitud").getValue();
+                    String tit = c.child("Descripcion").getValue().toString();
 
                     LatLng loc = new LatLng(lat,lon);
                     mMap.addMarker(new MarkerOptions().position(loc).title(tit));
