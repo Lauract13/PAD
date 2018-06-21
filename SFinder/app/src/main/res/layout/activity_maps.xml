@@ -64,7 +64,7 @@
             android:textColor="@android:color/holo_red_light"
             android:textColorLink="@android:color/holo_red_dark"
             android:textSize="20sp"
-            android:layout_marginLeft="210dp"
+            android:layout_marginLeft="200dp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -197,6 +197,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 }
 
+                DataSnapshot dbTalleres = dataSnapshot.child("Talleres");
+
+                Iterable<DataSnapshot> childrenTa = dbTalleres.getChildren();
+
+                for (DataSnapshot c : childrenTa) {
+                    Double lat = (double) c.child("Latitud").getValue();
+                    Double lon = (double) c.child("Longitud").getValue();
+                    String tit = c.child("Descripcion").getValue().toString();
+
+                    LatLng loc = new LatLng(lat,lon);
+                    mMap.addMarker(new MarkerOptions().position(loc).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
+
+
+                }
+
             }
 
             @Override
