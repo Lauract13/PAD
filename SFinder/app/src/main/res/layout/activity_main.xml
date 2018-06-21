@@ -9,15 +9,14 @@
     tools:context="sfinder.app.MainActivity">
 
 
-
-
     <EditText
         android:id="@+id/etemail"
         android:layout_width="306dp"
         android:layout_height="50dp"
+
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="186dp"
+        android:layout_marginTop="203dp"
         android:background="@drawable/container"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -33,7 +32,7 @@
 
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="204dp"
+        android:layout_marginBottom="193dp"
         android:background="@drawable/container"
         android:ems="10"
         android:hint="Contraseña"

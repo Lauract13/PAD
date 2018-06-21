@@ -69,7 +69,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -91,7 +90,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mCurrLocationMarker.remove();
         }
 
-        //Place current location marker
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
@@ -101,7 +99,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
@@ -145,9 +142,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
-                            // Got last known location. In some rare situations this can be null.
                             if (location != null) {
-                                // Logic to handle location object
                                 LatLng myLocation = new LatLng(location.getLatitude(),location.getLongitude());
                                 mMap.addMarker(new MarkerOptions().position(myLocation).title("Estas aquí"));
 
@@ -165,44 +160,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void addMarkers(GoogleMap googleMap){
         mMap = googleMap;
 
-
-       /* DatabaseReference dbSFinder =
-                FirebaseDatabase.getInstance().getReference()
-                        .child("Farmacia");*/
        DatabaseReference dbSFinder = FirebaseDatabase.getInstance().getReference();
 
-     /*  dbSFinder.child("Farmacias").addChildEventListener(new ValueEventListener(){
 
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot){
-              for(DataSnapshot farmacias : dataSnapshot.getChildren()){
-
-                  for(DataSnapshot datosFar : farmacias.getChildren()){
-                      Double lat = (double) datosFar.child("Latitud").getValue();
-                      Double lon = (double) datosFar.child("Longitud").getValue();
-                  }
-              }
-          }
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });*/
         dbSFinder.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                DataSnapshot dbSnapshot = dataSnapshot.child("Farmacias");
+                DataSnapshot dbFarmacias = dataSnapshot.child("Farmacias");
 
-                Iterable<DataSnapshot> children = dbSnapshot.getChildren();
+                Iterable<DataSnapshot> childrenF = dbFarmacias.getChildren();
 
-                for (DataSnapshot c : children) {
+                for (DataSnapshot c : childrenF) {
                     Double lat = (double) c.child("Latitud").getValue();
                     Double lon = (double) c.child("Longitud").getValue();
                     String tit = c.child("Descripcion").getValue().toString();
 
                     LatLng loc = new LatLng(lat,lon);
-                    mMap.addMarker(new MarkerOptions().position(loc).title(tit));
+                    mMap.addMarker(new MarkerOptions().position(loc).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+
+
+                }
+
+                DataSnapshot dbTiendas = dataSnapshot.child("Tiendas");
+
+                Iterable<DataSnapshot> childrenT = dbTiendas.getChildren();
+
+                for (DataSnapshot c : childrenT) {
+                    Double lat = (double) c.child("Latitud").getValue();
+                    Double lon = (double) c.child("Longitud").getValue();
+                    String tit = c.child("Descripcion").getValue().toString();
+
+                    LatLng loc = new LatLng(lat,lon);
+                    mMap.addMarker(new MarkerOptions().position(loc).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+
 
                 }
 
@@ -243,9 +234,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
-                        // Got last known location. In some rare situations this can be null.
+
                         if (location != null) {
-                            // Logic to handle location object
+
                             LatLng myLocation = new LatLng(location.getLatitude(),location.getLongitude());
                             mMap.addMarker(new MarkerOptions().position(myLocation).title("Estas aquí"));
                         }
@@ -255,7 +246,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
-    //Getting current location
+
     private void getCurrentLocation() {
         mMap.clear();
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -264,7 +255,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         FusedLocationProviderClient location = LocationServices.getFusedLocationProviderClient(this);
         if (location != null) {
-            //Getting longitude and latitude
+
             LatLng current = new LatLng(location.getLastLocation().getResult().getLongitude(),location.getLastLocation().getResult().getLatitude());
             mMap.addMarker(new MarkerOptions().position(current).title("Estas aqui"));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
@@ -277,20 +268,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Should we show an explanation?
+
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
 
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
                 new AlertDialog.Builder(this)
                         .setTitle("Location Permission Needed")
                         .setMessage("This app needs the Location permission, please accept to use location functionality")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                //Prompt the user once explanation has been shown
+
                                 ActivityCompat.requestPermissions(MapsActivity.this,
                                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                                         MY_PERMISSIONS_REQUEST_LOCATION );
@@ -301,7 +289,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
             } else {
-                // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION );

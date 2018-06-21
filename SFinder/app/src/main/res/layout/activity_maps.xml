@@ -34,46 +34,19 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context="gps.ucm.seekers.MainActivity"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+
         android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/bMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="Menu"
-            android:text="Menu"
-            android:textColor="@android:color/holo_blue_light"
-            android:textColorLink="@android:color/holo_blue_light"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="Menu" />
-
-        <Button xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/bMapa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:onClick="@onMapReady"
-            android:text="Mapa"
-            android:textColor="@android:color/holo_blue_light"
-            android:textColorLink="@android:color/holo_blue_light"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="Mapa" />
+        tools:context="gps.ucm.seekers.MainActivity">
 
         <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
             android:onClick="Perfil"
             android:text="Perfil"
             android:textColor="@android:color/holo_blue_light"
@@ -81,6 +54,18 @@
             android:textSize="20sp"
             android:textStyle="bold"
             tools:text="Perfil" />
+
+        <Button
+            android:id="@+id/bCerrarSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="Salir"
+            android:textColor="@android:color/holo_red_light"
+            android:textColorLink="@android:color/holo_red_dark"
+            android:textSize="20sp"
+            android:layout_marginLeft="210dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -28,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText mEmailField;
     private EditText mPasswordField;
 
-    // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
     }
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                             enviaEmailVerificacion();
 
                         }else{
-                            Toast.makeText(MainActivity.this,"Se produjo un error en el registro.",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"La contraseña debe contener al menos 6 caracteres.",Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -135,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
         }else if(i == R.id.bRegistro){
             registro(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        }else if(i == R.id.bCerrarSesion){
+            cerrarSesion();
         }
     }
     private void cerrarSesion(){
