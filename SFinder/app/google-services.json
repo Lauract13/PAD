@@ -1,4 +1,15 @@
 {
+
+
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  },
+
   "project_info": {
     "project_number": "902085622523",
     "firebase_url": "https://sfinder-2c8c0.firebaseio.com",

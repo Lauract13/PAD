@@ -22,18 +22,22 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.LocationRequest;
 
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseError;
 
 
-import com.google.android.gms.location.FusedLocationProviderClient;
+
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
@@ -56,6 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     FusedLocationProviderClient mFusedLocationClient;
     Marker mCurrLocationMarker;
+    private ValueEventListener eventListener;
 
     private Circle mCircle;
     @Override
@@ -68,9 +73,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        //Place current location marker
 
-
+        addMarkers(mMap);
 
     }
 
@@ -146,6 +150,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 // Logic to handle location object
                                 LatLng myLocation = new LatLng(location.getLatitude(),location.getLongitude());
                                 mMap.addMarker(new MarkerOptions().position(myLocation).title("Estas aquí"));
+
                             }
                         }
                     });
@@ -157,15 +162,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    public void addMarkers(GoogleMap googleMap){
+        mMap = googleMap;
+
+
+        DatabaseReference dbSFinder =
+                FirebaseDatabase.getInstance().getReference()
+                        .child("Farmacia");
+
+        dbSFinder.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Double lat = (double) dataSnapshot.child("Latitud").getValue();
+                    Double lon = (double) dataSnapshot.child("Longitud").getValue();
+                    String tit = dataSnapshot.child("Descripcion").getValue().toString();
+
+                    LatLng loc = new LatLng(lat,lon);
+                    mMap.addMarker(new MarkerOptions().position(loc).title(tit));
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -176,6 +207,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
+
             }else{
                 checkLocationPermission();
             }
@@ -205,13 +237,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void getCurrentLocation() {
         mMap.clear();
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         FusedLocationProviderClient location = LocationServices.getFusedLocationProviderClient(this);
