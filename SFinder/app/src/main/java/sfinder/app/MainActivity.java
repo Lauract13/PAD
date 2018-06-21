@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             MainActivity.this.startActivity(intent);
 
                         }else{
-                            Toast.makeText(MainActivity.this,"Error de auntentificación",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"Error de autentificación",Toast.LENGTH_SHORT).show();
 
                         }
                     }
@@ -132,13 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
         }else if(i == R.id.bRegistro){
             registro(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        }else if(i == R.id.bCerrarSesion){
-            cerrarSesion();
         }
-    }
-    private void cerrarSesion(){
-        mAuth.signOut();
-
     }
 
     private void enviaEmailVerificacion(){

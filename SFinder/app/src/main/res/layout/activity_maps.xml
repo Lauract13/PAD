@@ -38,16 +38,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-
-        android:orientation="horizontal"
-        tools:context="gps.ucm.seekers.MainActivity">
+        android:orientation="horizontal">
 
         <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:onClick="Perfil"
+            android:onClick="visitPerfil"
             android:text="Perfil"
             android:textColor="@android:color/holo_blue_light"
             android:textColorLink="@android:color/holo_blue_light"
@@ -55,16 +53,21 @@
             android:textStyle="bold"
             tools:text="Perfil" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/bCerrarSesion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:onClick="cerrarSesion"
             android:text="Salir"
             android:textColor="@android:color/holo_red_light"
             android:textColorLink="@android:color/holo_red_dark"
             android:textSize="20sp"
-            android:layout_marginLeft="200dp"
             android:textStyle="bold" />
 
     </LinearLayout>

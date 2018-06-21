@@ -3,12 +3,14 @@ package sfinder.app;
 import android.Manifest;
 import android.app.Service;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
 
 import com.google.android.gms.common.api.GoogleApi;
 import android.support.v4.app.ActivityCompat;
@@ -152,8 +154,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         }
+    }
 
+    public void cerrarSesion(View v)
+    {
+        // Llamar a funcion de SA para cerrar sesion.
+        // mAuth.signOut();
+    }
 
+    public void visitPerfil(View v)
+    {
+        Intent intent = new Intent(MapsActivity.this, PerfilActivity.class);
+        MapsActivity.this.startActivity(intent);
     }
 
 

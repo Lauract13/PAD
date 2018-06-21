@@ -43,7 +43,15 @@
       
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+
+        <activity
+            android:name=".PerfilActivity"
+            android:label="Perfil" />
+
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:label="Cambiar contraseña" />
     </application>
 
 </manifest>
