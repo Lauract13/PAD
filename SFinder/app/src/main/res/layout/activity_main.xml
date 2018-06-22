@@ -14,7 +14,7 @@
         android:layout_width="306dp"
         android:layout_height="50dp"
 
-        android:layout_alignParentTop="true"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="203dp"
         android:background="@drawable/container"
@@ -30,9 +30,9 @@
         android:layout_width="306dp"
         android:layout_height="50dp"
 
-        android:layout_alignParentBottom="true"
+
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="193dp"
+        android:layout_marginTop="270dp"
         android:background="@drawable/container"
         android:ems="10"
         android:hint="Contraseña"
