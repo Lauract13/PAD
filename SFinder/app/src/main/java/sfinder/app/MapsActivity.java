@@ -24,6 +24,7 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.LocationRequest;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DataSnapshot;
@@ -57,6 +58,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnConnectionFailedListener,ConnectionCallbacks,LocationListener {
 
     GoogleMap mMap;
+    private FirebaseAuth mAuth;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
     Location mLastLocation;
@@ -159,7 +161,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void cerrarSesion(View v)
     {
         // Llamar a funcion de SA para cerrar sesion.
-        // mAuth.signOut();
+
+         mAuth.signOut();
+        setContentView(R.layout.activity_main);
     }
 
     public void visitPerfil(View v)
