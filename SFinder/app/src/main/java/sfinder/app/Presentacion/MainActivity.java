@@ -27,7 +27,6 @@ import sfinder.app.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -43,17 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
         mEmailField = findViewById(R.id.etemail);
         mPasswordField = findViewById(R.id.etPassword);
-
-        mAuth = FirebaseAuth.getInstance();
-
-
     }
+
     public void onStart(){
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
-
+        ServicioAplicacion sa = ServicioAplicacion.getInstance();
+        FirebaseUser currentUser = sa.getAuth().getCurrentUser();
     }
 
 
@@ -62,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
         if (!validateForm()) {
             return;
         }
+        ServicioAplicacion sa = ServicioAplicacion.getInstance();
+        FirebaseAuth mAuth = sa.getAuth();
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            ServicioAplicacion sa = ServicioAplicacion.getInstance();
+                            FirebaseAuth mAuth = sa.getAuth();
                             FirebaseUser user = mAuth.getCurrentUser();
                             enviaEmailVerificacion();
 
@@ -103,30 +101,27 @@ public class MainActivity extends AppCompatActivity {
     }
     public void iniciarSesion(String email,String password){
 
-
         if(!validateForm()){
             return;
         }
-
+        ServicioAplicacion sa = ServicioAplicacion.getInstance();
+        FirebaseAuth mAuth = sa.getAuth();
         mAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            ServicioAplicacion sa = ServicioAplicacion.getInstance();
+                            FirebaseAuth mAuth = sa.getAuth();
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                             MainActivity.this.startActivity(intent);
 
                         }else{
                             Toast.makeText(MainActivity.this,"Error de autentificación",Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });
-
-
-
-
     }
 
     public void onClick(View v){
@@ -141,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enviaEmailVerificacion(){
+        ServicioAplicacion sa = ServicioAplicacion.getInstance();
+        FirebaseAuth mAuth = sa.getAuth();
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -163,5 +160,4 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }

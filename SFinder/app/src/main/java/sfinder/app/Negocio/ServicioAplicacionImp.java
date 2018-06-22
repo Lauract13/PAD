@@ -4,6 +4,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +14,8 @@ import sfinder.app.Integracion.DataAccessObject;
 
 public class ServicioAplicacionImp extends ServicioAplicacion {
 
+    private FirebaseAuth mAuth;
+
     private List<Marcador> talleres;
     private List<Marcador> farmacias;
     private List<Marcador> tiendas;
@@ -20,10 +23,21 @@ public class ServicioAplicacionImp extends ServicioAplicacion {
     public ServicioAplicacionImp()
     {
         super();
+        mAuth = FirebaseAuth.getInstance();
         talleres = new ArrayList<>();
         farmacias = new ArrayList<>();
         tiendas = new ArrayList<>();
         DataAccessObject.getInstance();
+    }
+
+    public FirebaseAuth getAuth()
+    {
+        return mAuth;
+    }
+
+    public void cerrarSesion()
+    {
+        mAuth.signOut();
     }
 
     public void inicializarMapa(GoogleMap map)

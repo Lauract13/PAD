@@ -57,7 +57,6 @@ import sfinder.app.R;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnConnectionFailedListener,ConnectionCallbacks,LocationListener {
 
     GoogleMap mMap;
-    private FirebaseAuth mAuth;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
     Location mLastLocation;
@@ -153,10 +152,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void cerrarSesion(View v)
     {
-        // Llamar a funcion de SA para cerrar sesion.
-
-         mAuth.signOut();
-        setContentView(R.layout.activity_main);
+        ServicioAplicacion sa = ServicioAplicacion.getInstance();
+        sa.cerrarSesion();
+        this.finish();
     }
 
     public void visitPerfil(View v)
