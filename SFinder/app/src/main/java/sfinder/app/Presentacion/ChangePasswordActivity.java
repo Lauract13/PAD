@@ -19,6 +19,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import sfinder.app.Negocio.ServicioAplicacion;
 import sfinder.app.R;
 
 public class ChangePasswordActivity extends FragmentActivity {
@@ -36,8 +37,10 @@ public class ChangePasswordActivity extends FragmentActivity {
 
     public void editarInformacion(View view)
     {
+        ServicioAplicacion sa = ServicioAplicacion.getInstance();
+        FirebaseAuth mAuth = sa.getAuth();
         final FirebaseUser user;
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        user = mAuth.getCurrentUser();
 
         final String email = user.getEmail();
 
@@ -65,7 +68,7 @@ public class ChangePasswordActivity extends FragmentActivity {
 
                                 }else {
                                     Toast.makeText(ChangePasswordActivity.this,"La contraseña ha sido modificada",Toast.LENGTH_SHORT).show();
-
+                                    ChangePasswordActivity.this.finish();
                                 }
                             }
                         });
