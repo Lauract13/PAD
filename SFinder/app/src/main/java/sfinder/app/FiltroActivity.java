@@ -1,8 +1,10 @@
 package sfinder.app;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;

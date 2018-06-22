@@ -15,6 +15,8 @@ import android.view.View;
 import com.google.android.gms.common.api.GoogleApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
+import android.widget.CheckBox;
+
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationListener;
@@ -81,7 +83,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    public void filtrar(View view){
 
+
+
+        DatabaseReference dbSFinder = FirebaseDatabase.getInstance().getReference();
+
+        mMap.clear();
+
+
+                final CheckBox checkBoxF = (CheckBox) findViewById(R.id.cbFarmacias);
+                if (checkBoxF.isChecked()) {
+
+
+
+                    checkBoxF.setChecked(false);
+                }
+                final CheckBox checkBoxT = (CheckBox) findViewById(R.id.cbTiendas);
+                if (checkBoxT.isChecked()) {
+
+
+                }
+                final CheckBox checkBoxTal = (CheckBox) findViewById(R.id.cbTalleres);
+                if (checkBoxT.isChecked()) {
+
+
+                }
+
+
+
+
+        setContentView(R.layout.activity_maps);
+
+    }
 
 
     @Override
@@ -173,8 +207,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void filtros(View v){
-        Intent intent = new Intent(MapsActivity.this, FiltroActivity.class);
-        MapsActivity.this.startActivity(intent);
+        setContentView(R.layout.activity_filtros);
     }
 
 
