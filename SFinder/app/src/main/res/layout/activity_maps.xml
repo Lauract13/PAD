@@ -42,7 +42,7 @@
 
         <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bPerfil"
-            android:layout_width="wrap_content"
+            android:layout_width="126dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:onClick="visitPerfil"
@@ -53,6 +53,20 @@
             android:textStyle="bold"
             tools:text="Perfil" />
 
+        <Button
+            android:id="@+id/bPerfil2"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:onClick="visitPerfil"
+            android:text="Filtros"
+            android:textColor="@android:color/darker_gray"
+            android:textColorLink="@android:color/holo_blue_light"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Filtros" />
+
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -60,7 +74,7 @@
 
         <Button
             android:id="@+id/bCerrarSesion"
-            android:layout_width="wrap_content"
+            android:layout_width="129dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="cerrarSesion"

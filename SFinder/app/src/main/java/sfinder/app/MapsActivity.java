@@ -172,6 +172,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MapsActivity.this.startActivity(intent);
     }
 
+    public void filtros(View v){
+        Intent intent = new Intent(MapsActivity.this, FiltroActivity.class);
+        MapsActivity.this.startActivity(intent);
+    }
+
 
     public void addMarkers(GoogleMap googleMap){
         mMap = googleMap;
