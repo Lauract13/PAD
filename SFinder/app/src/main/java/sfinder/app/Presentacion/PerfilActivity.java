@@ -27,8 +27,7 @@ public class PerfilActivity extends FragmentActivity {
         TextView userDesc = findViewById(R.id.userDesc);
         userDesc.setText(user.getEmail().toString());
 
-        TextView markersDesc = findViewById(R.id.markersDesc);
-        markersDesc.setText(Integer.toString(0));
+      
     }
 
     public void changePassword(View view)
