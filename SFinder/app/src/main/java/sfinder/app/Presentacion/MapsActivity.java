@@ -1,7 +1,6 @@
-package sfinder.app;
+package sfinder.app.Presentacion;
 
 import android.Manifest;
-import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,9 +11,9 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.google.android.gms.common.api.GoogleApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
+import android.widget.Button;
 import android.widget.CheckBox;
 
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
@@ -27,13 +26,7 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.LocationRequest;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DatabaseError;
-
-
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -55,6 +48,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import sfinder.app.Negocio.Marcador;
+import sfinder.app.Negocio.ServicioAplicacion;
+import sfinder.app.R;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, OnConnectionFailedListener,ConnectionCallbacks,LocationListener {
@@ -78,45 +75,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        addMarkers(mMap);
-
     }
-
-    public void filtrar(View view){
-
-
-
-        DatabaseReference dbSFinder = FirebaseDatabase.getInstance().getReference();
-
-        mMap.clear();
-
-
-                final CheckBox checkBoxF = (CheckBox) findViewById(R.id.cbFarmacias);
-                if (checkBoxF.isChecked()) {
-
-
-
-                    checkBoxF.setChecked(false);
-                }
-                final CheckBox checkBoxT = (CheckBox) findViewById(R.id.cbTiendas);
-                if (checkBoxT.isChecked()) {
-
-
-                }
-                final CheckBox checkBoxTal = (CheckBox) findViewById(R.id.cbTalleres);
-                if (checkBoxT.isChecked()) {
-
-
-                }
-
-
-
-
-        setContentView(R.layout.activity_maps);
-
-    }
-
 
     @Override
     public void onLocationChanged(Location location)
@@ -207,84 +166,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void filtros(View v){
-        setContentView(R.layout.activity_filtros);
+
+        Intent intent = new Intent(MapsActivity.this, FilterActivity.class);
+        MapsActivity.this.startActivity(intent);
     }
 
-
-
-
-    public void addMarkers(GoogleMap googleMap){
-        mMap = googleMap;
-
-       DatabaseReference dbSFinder = FirebaseDatabase.getInstance().getReference();
-
-
-        dbSFinder.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                DataSnapshot dbFarmacias = dataSnapshot.child("Farmacias");
-
-                Iterable<DataSnapshot> childrenF = dbFarmacias.getChildren();
-
-                for (DataSnapshot c : childrenF) {
-                    Double lat = (double) c.child("Latitud").getValue();
-                    Double lon = (double) c.child("Longitud").getValue();
-                    String tit = c.child("Descripcion").getValue().toString();
-
-                    LatLng loc = new LatLng(lat,lon);
-                    mMap.addMarker(new MarkerOptions().position(loc).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-
-
-                }
-
-                DataSnapshot dbTiendas = dataSnapshot.child("Tiendas");
-
-                Iterable<DataSnapshot> childrenT = dbTiendas.getChildren();
-
-                for (DataSnapshot c : childrenT) {
-                    Double lat = (double) c.child("Latitud").getValue();
-                    Double lon = (double) c.child("Longitud").getValue();
-                    String tit = c.child("Descripcion").getValue().toString();
-
-                    LatLng loc = new LatLng(lat,lon);
-                    mMap.addMarker(new MarkerOptions().position(loc).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
-
-
-                }
-
-                DataSnapshot dbTalleres = dataSnapshot.child("Talleres");
-
-                Iterable<DataSnapshot> childrenTa = dbTalleres.getChildren();
-
-                for (DataSnapshot c : childrenTa) {
-                    Double lat = (double) c.child("Latitud").getValue();
-                    Double lon = (double) c.child("Longitud").getValue();
-                    String tit = c.child("Descripcion").getValue().toString();
-
-                    LatLng loc = new LatLng(lat,lon);
-                    mMap.addMarker(new MarkerOptions().position(loc).title(tit).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW)));
-
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-
-    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        ServicioAplicacion.getInstance().inicializarMapa(mMap);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if(ContextCompat.checkSelfPermission(this,

@@ -1,4 +1,4 @@
-package sfinder.app;
+package sfinder.app.Presentacion;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import sfinder.app.R;
 
 public class PerfilActivity extends FragmentActivity {
 

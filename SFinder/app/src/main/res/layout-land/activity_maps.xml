@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity" >
+    tools:context=".Presentacion.MapsActivity" >
 
     <!--linear layaut del mapa -->
 
@@ -27,7 +27,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MapsActivity"
+            tools:context=".Presentacion.MapsActivity"
             tools:layout="@android:layout/activity_list_item"></fragment>
 
     </LinearLayout>

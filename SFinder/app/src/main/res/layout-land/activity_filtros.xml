@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#F3F7F6"
     android:visibility="visible"
-    tools:context="sfinder.app.MapsActivity">
+    tools:context=".Presentacion.FilterActivity">
 
     <Button
         android:id="@+id/bAplicarFiltros"
@@ -18,8 +18,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:background="@android:color/holo_blue_light"
-        android:onClick="onClick"
         android:text="Aplicar filtros"
+        android:onClick="aplicarFiltros"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
         android:textColor="@android:color/white"
         android:textColorHighlight="@android:color/holo_blue_light"
@@ -46,7 +46,8 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:text="Tiendas"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:checked="true"/>
 
     <CheckBox
         android:id="@+id/cbFarmacias"
@@ -56,7 +57,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Farmacias"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:checked="true"/>
 
     <CheckBox
         android:id="@+id/cbTalleres"
@@ -66,7 +68,8 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"
         android:text="Talleres"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:checked="true"/>
 
 
 </RelativeLayout>

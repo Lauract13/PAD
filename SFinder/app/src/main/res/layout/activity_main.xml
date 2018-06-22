@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F3F7F6"
     android:visibility="visible"
-    tools:context="sfinder.app.MainActivity">
+    tools:context="sfinder.app.Presentacion.MainActivity">
 
 
     <EditText

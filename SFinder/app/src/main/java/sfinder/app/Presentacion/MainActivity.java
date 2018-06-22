@@ -1,10 +1,12 @@
-package sfinder.app;
+package sfinder.app.Presentacion;
 
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.firebase.auth.FirebaseAuth;
 
 import android.support.annotation.NonNull;
@@ -18,6 +20,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
 import com.google.firebase.auth.FirebaseUser;
+
+import sfinder.app.Negocio.ServicioAplicacion;
+import sfinder.app.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ServicioAplicacion.getInstance();
 
         mEmailField = findViewById(R.id.etemail);
         mPasswordField = findViewById(R.id.etPassword);

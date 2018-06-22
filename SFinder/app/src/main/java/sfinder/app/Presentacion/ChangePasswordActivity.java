@@ -1,4 +1,4 @@
-package sfinder.app;
+package sfinder.app.Presentacion;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +18,8 @@ import com.google.firebase.auth.EmailAuthProvider;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import sfinder.app.R;
 
 public class ChangePasswordActivity extends FragmentActivity {
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity" >
+    tools:context=".Presentacion.MapsActivity" >
 
     <!--linear layaut del mapa -->
 
@@ -27,7 +27,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".MapsActivity"
+            tools:context=".Presentacion.MapsActivity"
             tools:layout="@android:layout/activity_list_item"></fragment>
 
 
@@ -42,7 +42,7 @@
 
         <Button xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/bPerfil"
-            android:layout_width="126dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:onClick="visitPerfil"
@@ -60,7 +60,7 @@
 
         <Button
             android:id="@+id/bPerfil2"
-            android:layout_width="140dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_weight="1"
@@ -79,7 +79,7 @@
 
         <Button
             android:id="@+id/bCerrarSesion"
-            android:layout_width="129dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:onClick="cerrarSesion"

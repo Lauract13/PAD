@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#F3F7F6"
     android:visibility="visible"
-    tools:context="sfinder.app.PerfilActivity">
+    tools:context="sfinder.app.Presentacion.PerfilActivity">
 
     <TextView
         android:id="@+id/perfilLabel"

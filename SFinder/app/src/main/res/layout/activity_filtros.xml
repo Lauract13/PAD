@@ -7,19 +7,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#F3F7F6"
     android:visibility="visible"
-    tools:context="sfinder.app.MapsActivity">
+    tools:context=".Presentacion.FilterActivity">
 
     <Button
         android:id="@+id/bAplicarFiltros"
         android:layout_width="350dp"
-
         android:layout_height="35dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="56dp"
         android:background="@android:color/holo_blue_light"
-        android:onClick="filtrar"
         android:text="Aplicar filtros"
+        android:onClick="aplicarFiltros"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
         android:textColor="@android:color/white"
         android:textColorHighlight="@android:color/holo_blue_light"
@@ -42,11 +41,12 @@
         android:id="@+id/cbTiendas"
         android:layout_width="296dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="199dp"
+        android:layout_marginTop="280dp"
         android:text="Tiendas"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:checked="true"/>
 
     <CheckBox
         android:id="@+id/cbFarmacias"
@@ -56,7 +56,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="220dp"
         android:text="Farmacias"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:checked="true"/>
 
     <CheckBox
         android:id="@+id/cbTalleres"
@@ -66,7 +67,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="160dp"
         android:text="Talleres"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:checked="true"/>
 
 
 </RelativeLayout>
