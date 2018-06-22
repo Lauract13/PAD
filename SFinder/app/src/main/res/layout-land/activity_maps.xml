@@ -30,8 +30,6 @@
             tools:context=".MapsActivity"
             tools:layout="@android:layout/activity_list_item"></fragment>
 
-
-
     </LinearLayout>
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
@@ -60,7 +58,7 @@
 
         <Button
             android:id="@+id/bPerfil2"
-            android:layout_width="140dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_weight="1"
@@ -90,9 +88,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
-
-
-
 
 </LinearLayout>

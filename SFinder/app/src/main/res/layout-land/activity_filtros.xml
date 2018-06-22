@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F3F7F6"
+    android:visibility="visible"
+    tools:context="sfinder.app.MapsActivity">
+
+    <Button
+        android:id="@+id/bAplicarFiltros"
+        android:layout_width="350dp"
+
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="onClick"
+        android:text="Aplicar filtros"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@android:color/holo_blue_light"
+        android:textColorHint="@android:color/holo_blue_light"
+        android:textColorLink="@android:color/holo_orange_light" />
+
+    <TextView
+        android:id="@+id/filtroLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="Categorías"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="30sp"
+        app:fontFamily="@font/amiko_bold" />
+
+    <CheckBox
+        android:id="@+id/cbTiendas"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbTalleres"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Tiendas"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/cbFarmacias"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbTiendas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Farmacias"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/cbTalleres"
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/filtroLabel"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="Talleres"
+        android:textSize="18sp" />
+
+
+</RelativeLayout>
