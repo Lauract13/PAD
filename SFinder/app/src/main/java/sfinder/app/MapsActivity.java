@@ -178,6 +178,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+
+
     public void addMarkers(GoogleMap googleMap){
         mMap = googleMap;
 

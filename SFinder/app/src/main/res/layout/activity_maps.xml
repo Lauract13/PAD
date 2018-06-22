@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_weight="1"
-            android:onClick="visitPerfil"
+            android:onClick="filtros"
             android:text="Filtros"
             android:textColor="@android:color/darker_gray"
             android:textColorLink="@android:color/holo_blue_light"
